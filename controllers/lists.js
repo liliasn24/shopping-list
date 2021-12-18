@@ -27,5 +27,15 @@ router.get('/:id', async (req, res) => {
 });
 
 //UPDATE
-
+router.put('/:id', async (req, res) => {
+	try {
+		const updatedList = await List.findByIdAndUpdate(req.params.id, req.body, {
+			new: true
+		});
+		res.status(200).json(updatedList);
+	} catch (error) {
+		console.error(error);
+		res.status(400).json({ message: error.message });
+	}
+});
 //DELETE
