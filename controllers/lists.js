@@ -16,6 +16,15 @@ router.get('/', async (req, res) => {
 	}
 });
 //Show
+router.get('/:id', async (req, res) => {
+	try {
+		const foundList = await List.findById(req.params.id);
+		res.status(200).json(foundList);
+	} catch (error) {
+		console.error(error);
+		res.status(400).json({ message: error.message });
+	}
+});
 
 //UPDATE
 
