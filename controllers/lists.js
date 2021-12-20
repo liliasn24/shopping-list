@@ -5,6 +5,16 @@ const router = require('express').Router();
 
 //READ
 
+router.get('/', async (req, res) => {
+	try {
+		const foundLists = await List.find({});
+		res.status(200).json(foundLists);
+	} catch (error) {
+		console.error(error);
+		res.status(400).json({ message: error.message });
+	}
+});
+
 //Index
 router.get('/', async (req, res) => {
 	try {
@@ -49,3 +59,5 @@ router.delete('/:id', async (req, res) => {
 		res.status(400).json({ message: error.message });
 	}
 });
+
+module.exports = router;
