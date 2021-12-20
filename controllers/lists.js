@@ -1,10 +1,10 @@
 const List = require('..models/list');
-const { route } = require('express/lib/application');
+
 const router = require('express').Router();
 
 //CREATE
 
-route.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
 	try {
 		const createdList = await List.create(req.body);
 		res.status(200).json(createdList);
