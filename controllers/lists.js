@@ -39,3 +39,13 @@ router.put('/:id', async (req, res) => {
 	}
 });
 //DELETE
+
+router.delete('/:id', async (req, res) => {
+	try {
+		const deletedList = await List.findByIdAndDelete(req.params.id);
+		res.status(200).json(updatedList);
+	} catch (error) {
+		console.error(error);
+		res.status(400).json({ message: error.message });
+	}
+});
