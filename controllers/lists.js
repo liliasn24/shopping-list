@@ -1,5 +1,4 @@
-const List = require('..models/list');
-
+const List = require('../models/list');
 const router = require('express').Router();
 
 //CREATE
@@ -18,8 +17,8 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
 	try {
-		const foundLists = await List.find({});
-		res.status(200).json(foundLists);
+		const foundList = await List.find({});
+		res.status(200).json(foundList);
 	} catch (error) {
 		console.error(error);
 		res.status(400).json({ message: error.message });
